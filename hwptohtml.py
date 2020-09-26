@@ -20,7 +20,7 @@ def set_img(path,id):
 
     for img in soup.findAll('img'):
         try:
-            img['src'] = r"{{url_for('" + 'static' + r"', filename='tempfile/" + id + '/' +img['src'] + r"')}}"
+            img['src'] = r"{{url_for('" + '/static' + r"', filename='tempfile/" + id + '/' +img['src'] + r"')}}"
         except:
             pass
     open(path+"/result.html", "w",encoding='UTF8').write(str(soup))
@@ -30,15 +30,15 @@ def change_to_html(path):
 
     id=str(uuid.uuid4())
 
-    os.mkdir('static/tempfile/'+id)
+    os.mkdir('/static/tempfile/'+id)
 
-    subprocess.check_call(['static/hwp5html.exe',"--output", "static/tempfile/" + id , path])
+    subprocess.check_call(['/static/hwp5html.exe',"--output", "/static/tempfile/" + id , path])
 
-    subprocess.check_call(['static/hwp5html.exe',"--html","--output", "static/tempfile/"+id+"/hey.html",path])
+    subprocess.check_call(['/static/hwp5html.exe',"--html","--output", "/static/tempfile/"+id+"/hey.html",path])
 
-    combine("static/tempfile/"+id)
+    combine("/static/tempfile/"+id)
 
-    set_img("static/tempfile/"+id,id)
+    set_img("/static/tempfile/"+id,id)
 
     return id
 
