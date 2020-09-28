@@ -35,16 +35,15 @@ def set_img(path,id):
             pass
     open(path+"/result.html", "w",encoding='UTF8').write(str(soup))
     
-
 def change_to_html(path):
 
     id=str(uuid.uuid4())
 
     os.mkdir(os.path.join(temp_path,id))
 
-    subprocess.check_call([os.path.join(static_path,'hwp5html.exe'),"--output", os.path.join(temp_path, id) , path])
+    subprocess.check_call(['wine',os.path.join(static_path,'hwp5html.exe'),"--output", os.path.join(temp_path, id) , path])
 
-    subprocess.check_call([os.path.join(static_path,'hwp5html.exe'),"--html","--output", os.path.join(temp_path,id,"hey.html"),path])
+    subprocess.check_call(['wine',os.path.join(static_path,'hwp5html.exe'),"--html","--output", os.path.join(temp_path,id,"hey.html"),path])
 
     combine(os.path.join(temp_path,id))
 
