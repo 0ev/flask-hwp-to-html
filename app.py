@@ -14,9 +14,6 @@ print(static_path)
 
 temp_path=os.path.join(static_path,'tempfile')
 
-st = os.stat(os.path.join(static_path,'hwp5html.exe'))
-os.chmod(os.path.join(static_path,'hwp5html.exe'), st.st_mode | stat.S_IEXEC)
-
 ALLOWED_EXTENSIONS = {'hwp'}
 
 def allowed_file(filename):

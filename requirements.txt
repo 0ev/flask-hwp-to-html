@@ -3,3 +3,4 @@ werkzeug
 uuid
 beautifulsoup4
 gunicorn
+pyhwp
